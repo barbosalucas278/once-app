@@ -11,7 +11,7 @@ export function BottomNav() {
   const navItems = [
     { href: "/noticias", label: "Noticias", icon: Newspaper },
     { href: "/vivo", label: "Vivo", icon: Radio },
-    { href: "/fichas", label: "Fichas", icon: Calendar },
+    { href: "/fechas", label: "Fechas", icon: Calendar },
   ]
 
   return (

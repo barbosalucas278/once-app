@@ -1,22 +1,11 @@
 "use client"
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Chrome } from "lucide-react"
+import Link from "next/link"
 
 export default function LoginPage() {
-  const router = useRouter()
-  const [isLoading, setIsLoading] = useState(false)
-
-  const handleGoogleLogin = async () => {
-    setIsLoading(true)
-    // Simulate Google login
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    router.push("/noticias")
-  }
-
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-background px-6">
       <div className="w-full max-w-md space-y-8">
@@ -32,13 +21,14 @@ export default function LoginPage() {
 
         <div className="space-y-4">
           <Button
-            onClick={handleGoogleLogin}
-            disabled={isLoading}
+            asChild
             className="w-full h-12 text-base font-medium"
             size="lg"
           >
-            <Chrome className="mr-2 h-5 w-5" />
-            {isLoading ? "Iniciando sesión..." : "Iniciar sesión con Google"}
+            <Link href="/api/auth/login">
+              <Chrome className="mr-2 h-5 w-5" />
+              Iniciar sesión con Google
+            </Link>
           </Button>
 
           <p className="text-xs text-center text-muted-foreground text-balance">

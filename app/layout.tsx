@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -40,10 +41,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="dark">
-      <body className={`${inter.className} antialiased`}>
-        {children}
-        <Analytics />
-      </body>
+      <UserProvider>
+        <body className={`${inter.className} antialiased`}>
+          {children}
+          <Analytics />
+        </body>
+      </UserProvider>
     </html>
   )
 }

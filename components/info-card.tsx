@@ -1,13 +1,21 @@
 import { Card, CardContent } from "@/components/ui/card"
-import type { LucideIcon } from "lucide-react"
+import * as LucideIcons from "lucide-react"
+
+type IconName = keyof typeof LucideIcons;
 
 interface InfoCardProps {
-  icon: LucideIcon
+  icon: IconName
   label: string
   value: string
 }
 
-export function InfoCard({ icon: Icon, label, value }: InfoCardProps) {
+export function InfoCard({ icon, label, value }: InfoCardProps) {
+  const Icon = LucideIcons[icon] as React.ElementType;
+
+  if (!Icon) {
+    return null; // or a default icon
+  }
+
   return (
     <Card className="hover:bg-accent transition-colors cursor-pointer">
       <CardContent className="p-4">
